@@ -16,14 +16,6 @@ env:
   NODE_ENV: production
 
 jobs:
-  workflow-keepalive:
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - name: Keepalive
-        uses: liskin/gh-workflow-keepalive@v1
   LLGP:
     runs-on: ubuntu-latest
     steps:
@@ -72,3 +64,11 @@ jobs:
           curl "${{ env.PING_URL }}"
         env:
           PING_URL: ${{ secrets.PING_URL }}
+          
+  workflow-keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: liskin/gh-workflow-keepalive@v1    
