@@ -1,8 +1,8 @@
-name: keep alive
+name: keepalive
 
 on:
   schedule:
-    - cron: "0 0 */29 * *"
+    - cron: "0 0 * * *"
 
 jobs:
   tests:
